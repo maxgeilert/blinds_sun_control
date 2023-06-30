@@ -10,7 +10,7 @@ logger.info("config: {}".format(blinds))
 for i in blinds:
     if i["direction"] == hass.states.get(control_entity).state:
         logger.info("{} is equal to {}, lowering shades..".format(i["direction"], hass.states.get(control_entity).state))
-        hass.services.call("cover", "set_cover_position", {"entity_id": i["entity"], "position": i["closed_position"]})
+        hass.services.call("cover", "close_cover", {"entity_id": i["entity"]})
     else:
         logger.info("{} is not equal to {}, rising shades..".format(i["direction"], hass.states.get(control_entity).state))
-        hass.services.call("cover", "set_cover_position", {"entity_id": i["entity"], position: i["open_position"]})
+        hass.services.call("cover", "open_cover", {"entity_id": i["entity"]})
